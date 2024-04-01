@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
   });
 });
 
-app.body("/search", async (req, res) => {
+app.post("/search", async (req, res) => {
   const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 
   const promptData = req.body.prompt;
