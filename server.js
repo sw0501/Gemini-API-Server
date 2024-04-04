@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const fetch = require("node-fetch");
 const app = express();
 const port = 80;
 
@@ -29,6 +30,7 @@ app.post("/search", async (req, res) => {
   const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 
   const promptData = req.body.prompt;
+  console.log(promptData);
 
   // ...
 
