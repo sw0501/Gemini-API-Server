@@ -4,18 +4,18 @@ const fetch = require("node-fetch");
 const app = express();
 const port = 80;
 
+const bodyParser = require("body-parser");
+
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 require("dotenv").config();
 
 // ...
 
 const corsOptions = {
-  origin: "*",
+  origin: ["*", 'null']
 };
 
 app.use(cors(corsOptions));
-
-const bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
 app.use(express.static(__dirname + "/Front"));
