@@ -84,11 +84,13 @@ app.post("/search", async (req, res) => {
     prompt += "여행 날짜는 " + promptData.day + "입니다. ";
     prompt += "여행 인원은 " + promptData.peopleNumber + "입니다. ";
     prompt += "예상 경비는 " + promptData.price + "입니다. ";
-    prompt += "여행지 이름은 name, 위도는 latitude 소수점 아래 8자리까지, 경도는 longitude 소수점 아래 8자리까지, 여행지 간단한 설명은 describe, 여행 일자는 timeStamp로 1일차 2일차 .. n일차로 구분하는 JSON Array 형식으로 줘 [ { 앞에 불필요한 문자는 제거해줘";
+    prompt += "여행지 이름은 name, 위도는 latitude 소수점 아래 10자리까지, 경도는 longitude 소수점 아래 10자리까지, 여행지 간단한 설명은 describe, 여행 일자는 timeStamp로 1일차 2일차 .. n일차로 구분하는 JSON Array 형식으로 줘 데이터 앞이랑 뒤에 ```랑 ```json은 절대 주지마";
+    //prompt += "Json Array의 형식은 다음과 같아 [ { name: value, latitude: value, longitude: value, describe: value, timeStamp: value}, ]"
 
     const result = await model.generateContent(prompt);
     const response = await result.response;
     const text = response.text();
+    console.log(text);
     
     return text;
   }
